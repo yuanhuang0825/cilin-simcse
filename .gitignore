@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.ipynb_checkpoints/
+
+# Local editor / agent settings
+.vscode/
+.claude/
+.codex/
+.agents/
+
+# Experiment data and artifacts
+data/
+dataset/
+raw_data/
+checkpoints/
+wandb/
+prototypes/
+
+# Local notebooks and generated reports
+test.ipynb
+rare_senses_hist.png
+valid_prototype_results.json

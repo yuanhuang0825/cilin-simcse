@@ -1,0 +1,43 @@
+paths:
+  cilin_path: "same.txt"              # 詞林 same.txt 路徑
+  train_corpus_path: dataset/wiki_zh     # 已斷詞 JSON，List[List[str]]
+  save_dir: "checkpoints/20260225"     # 模型存放資料夾
+
+model:
+  encoder_name: "hfl/chinese-roberta-wwm-ext"
+  mlm_name: "hfl/chinese-bert-wwm-ext"
+  pooling: "mean"                # "cls" 或 "mean"
+  temp: 0.05
+  distance_metric: "euclidean"   # "euclidean" 或 "cosine"
+
+  use_hard_neg: true
+  hard_neg_weight: 0.5
+  margin: 0.3
+
+  use_retrofit: true
+  retrofit_weight: 0.1
+
+training:
+  use_wandb: true
+  wandb_project: "simcse-cilin"
+  wandb_id: null
+  wandb_resume: false
+  resume_path: null
+  run_name: "simcse-run"
+  batch_size: 384
+  two_stage_sampling: true
+  group_sample_k: 384
+  num_epochs: 10
+  max_len: 64
+  lr: 3e-5
+  warmup_ratio: 0.1
+  prob_threshold: 0.01          # CilinAugmenter 用的 MLM 閾值
+  num_workers: 0
+  seed: 42
+  device: "auto"
+  use_amp: true                 # CUDA 上啟用混合精度（半精度）
+  precompute_workers: 16        # 若使用 precompute_epochs，則設定此參數
+  val_ratio: 0.2                # 8:2 切分
+  val_num_pairs: 200            # metrics 用的 Cilin pair 數量
+  local_uniformity_k: 50         # Local Uniformity 計算時的鄰居數
+  local_uniformity_max_samples: 2048  # Local Uniformity 計算時最多採樣的句向量數，避免 OOM
