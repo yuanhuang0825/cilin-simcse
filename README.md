@@ -261,6 +261,17 @@ If `training.use_wandb: true`, these metrics are also logged to Weights & Biases
 
 ## Citation and Acknowledgements
 
+If you use this repository, please cite it as:
+
+```bibtex
+@software{huang2026cilin_simcse,
+  author = {Bo-Yuan, Huang},
+  title = {Cilin-SimCSE: Chinese Contextual Sense Embeddings with Synonym Constraints},
+  year = {2026},
+  url = {https://github.com/yuanhuang0825/cilin-simcse}
+}
+```
+
 This project builds on the following models, methods, and datasets:
 
 - HFL Chinese BERT/RoBERTa WWM models: `hfl/chinese-bert-wwm-ext` and
